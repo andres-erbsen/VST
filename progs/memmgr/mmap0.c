@@ -13,7 +13,7 @@ against the spec of mmap0 and do not verify the body of mmap0.
   }*/
 /*Specialization using platform-dependent values - previously hardcoded in mmap0_spec*/
 void* mmap0(void *addr, size_t len, int fildes) {
-  void* p = mmap(addr,len, 3, 4098, fildes,0);
+  void* p = mmap(addr,len, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, fildes, 0);
   if (p == MAP_FAILED) return NULL;
   else return p;
   }
